@@ -12,16 +12,16 @@ class TodoStore {
   list: Todo[] = [];
 
   // we want to connect to mobx now & make it re-active
-  // Creating Observable - trackable field property that stores the State
   constructor() {
     // func by mobx
     // first param is Object - instance of a TodoStore
     // Second param is Map of Annotation to link Properties & Methods of our Class
     // with respective mobx classification to UPDATE our State Object - An Action
     makeObservable(this, {
-      // list state
+      // Creating Observable - trackable field property that stores the State
+      // 'observable' means piece of state which can be trackable & subscribe
       list: observable,
-      // actions
+      // actions to modify the state
       add: action,
       toggle: action,
       remove: action,
@@ -45,6 +45,8 @@ class TodoStore {
     });
   }
 
+  // note - Passing whole todo object & since objects are passed by 'reference'
+  // we can simply manipulate it directly
   toggle(todo: Todo) {
     todo.isDone = !todo.isDone;
   }
