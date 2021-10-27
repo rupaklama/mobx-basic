@@ -34,7 +34,7 @@ class TodoStore {
   // methods to update our state
   add(title: string) {
     // validating input
-    if (title.length < 3) {
+    if (title.length < 2) {
       return;
     }
 

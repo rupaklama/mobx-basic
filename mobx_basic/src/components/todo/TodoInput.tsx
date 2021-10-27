@@ -1,30 +1,35 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { FormEvent } from 'react';
 
-import TodoStore from '../../stores/TodoStore';
+// context store
+import { useStore } from '../../stores';
+
+// import TodoStore from '../../stores/TodoStore';
 
 import styles from './TodoInput.module.css';
 
 // Creating 'todos' parameter which accepts an arg of type - TodoStore Object
 // passing 'TodoStore' as an arg
-const TodoInput = ({ todos }: { todos: TodoStore }) => {
-  const [newTodo, setNewTodo] = useState('');
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setNewTodo(e.target.value);
-  };
+// const TodoInput = ({ todos }: { todos: TodoStore }) => {
+const TodoInput = () => {
+  // with Context api
+  const { todos } = useStore();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    // add action from our Store
-    todos.add(newTodo);
+    const formElement = e.target as HTMLFormElement;
+    const formData = new FormData(formElement);
+    const value = String(formData.get('todo-input' || ''));
+    // action
+    todos.add(value);
 
-    setNewTodo('');
+    // reset form
+    formElement.reset();
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles['todo-input-group']}>
-      <input value={newTodo} onChange={handleInputChange} />
+      <input name='todo-input' placeholder='Add todo...' />
       <button type='submit'>Add Todo</button>
     </form>
   );

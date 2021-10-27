@@ -1,4 +1,4 @@
-/* This project supports CSS Modules alongside regular stylesheets using the [name].module.css file naming convention. CSS Modules allows the scoping of CSS by automatically creating a unique classname of the format [filename]\_[classname]\_\_[hash] */
+/* This project supports CSS Modules alongside regular stylesheets using the [name].module.css file naming convention. CSS Modules allows the scoping of CSS by automatically creating a unique class name of the format [filename]\_[classname]\_\_[hash] */
 
 /* CSS Modules let you use the same CSS class name in different files without worrying about naming clashes */
 
@@ -19,7 +19,7 @@
 }
 
 .todo-input-group > input:focus {
-  outline-color: lightblue;
+  outline-color: #add8e6;
 }
 
 .todo-input-group > button {
