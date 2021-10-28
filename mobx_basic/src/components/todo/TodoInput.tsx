@@ -11,7 +11,7 @@ import styles from './TodoInput.module.css';
 // passing 'TodoStore' as an arg
 // const TodoInput = ({ todos }: { todos: TodoStore }) => {
 const TodoInput = () => {
-  // with Context api
+  // accessing todos state in our store with Context api
   const { todos } = useStore();
 
   const handleSubmit = (e: FormEvent) => {

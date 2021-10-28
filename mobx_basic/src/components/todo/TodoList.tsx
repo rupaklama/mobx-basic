@@ -21,7 +21,7 @@ const TodoList = () => {
 
   return (
     <ul className={styles['todo-list']}>
-      {todos.list.map(todo => (
+      {todos.list.map((todo: Todo) => (
         <li key={todo.id}>
           <label htmlFor={String(todo.id)} className={todo.isDone ? styles.done : ''}>
             {todo.title}

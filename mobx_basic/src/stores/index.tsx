@@ -3,12 +3,14 @@ import TodoStore from './TodoStore';
 
 // Root Object containing all our Stores
 const store = {
-  todos: new TodoStore(),
+  // todos: new TodoStore(),
+  // Factory Function STORE
+  todos: TodoStore,
 };
 
 export const StoreContext = createContext(store);
 
-// custom hook to avoid keep importing useContext in all our components
+// custom hook to avoid keep importing useContext & StoreContext in all our components to access our store
 export const useStore = () => {
   // return useContext(StoreContext) as typeof store;
   // same as above with different annotation
