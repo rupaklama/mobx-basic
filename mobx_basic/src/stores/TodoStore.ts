@@ -1,5 +1,5 @@
 // import { action, makeAutoObservable, makeObservable, observable } from 'mobx';
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, trace } from 'mobx';
 
 export interface Todo {
   id: number;
@@ -14,7 +14,7 @@ export interface Todo {
 // Creating a MobX Store using a 'Factory' function Store
 // note - The first param in makeAutoObservable & makeObservable is 'this' which is an Observable Object so
 // We start by making call to makeAutoObservable & replacing 'this' with an 'empty object' &
-// now we can make makeAutoObservable the return value of a function & assign it to the constant variable.
+// now we can make makeAutoObservable - the return value of a function & assign it to the constant variable.
 const TodoStore = makeAutoObservable({
   // list state
   list: [] as Todo[],
@@ -42,6 +42,14 @@ const TodoStore = makeAutoObservable({
 
   remove(todo: Todo) {
     this.list = this.list.filter(item => item.id !== todo.id);
+  },
+
+  // computed - values marks as a getter that will derive new facts from the state and cache its output
+  // Computed values can be created by annotating JavaScript getters with computed value.
+  get unfinishedTodos() {
+    // trace can only be used inside a tracked computed value or a Reaction
+    // trace();
+    return this.list.filter((todo: Todo) => !todo.isDone);
   },
 });
 
