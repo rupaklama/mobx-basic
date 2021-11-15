@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 import TodoStore from './TodoStore';
 
-// Root Object containing all our Stores
+// todos store
 const store = {
   // todos: new TodoStore(),
   // Factory Function STORE
