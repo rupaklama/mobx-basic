@@ -8,6 +8,7 @@ const store = {
   todos: TodoStore,
 };
 
+// global state
 export const StoreContext = createContext(store);
 
 // custom hook to avoid keep importing useContext & StoreContext in all our components to access our store
