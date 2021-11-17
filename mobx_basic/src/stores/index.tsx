@@ -4,7 +4,7 @@ import TodoStore from './TodoStore';
 // todos store
 const store = {
   // todos: new TodoStore(),
-  // Factory Function STORE
+  // note - Factory Functions are functions that create other Objects without the New keyword.
   todos: TodoStore,
 };
 
